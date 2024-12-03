@@ -12,11 +12,32 @@ from dotenv import load_dotenv
 import os
 import json
 
-# Desabilitar avisos de certificado
+# Disable certificate warnings
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-# Carregar variáveis do .env
+# Load environment variables
 load_dotenv()
+
+# Responsible Use Disclaimer Function
+def display_responsible_use_warning():
+    print(f"\n{Fore.RED}🚨 AVISO IMPORTANTE DE USO RESPONSÁVEL 🚨{Style.RESET_ALL}")
+    print(f"{Fore.YELLOW}Este scanner de vulnerabilidades destina-se APENAS a fins éticos e legais:{Style.RESET_ALL}")
+    print("1. Você DEVE ter AUTORIZAÇÃO EXPLÍCITA por escrito do proprietário do sistema antes de realizar qualquer teste.")
+    print("2. Realizar testes de penetração sem permissão é um crime em muitos países.")
+    print("3. Este scanner deve ser usado APENAS em:")
+    print("   - Sistemas que você possui")
+    print("   - Sistemas para os quais tem permissão documentada")
+    print("   - Ambientes de teste controlados")
+    print(f"\n{Fore.RED}Uso não autorizado pode resultar em:{Style.RESET_ALL}")
+    print("- Ações legais")
+    print("- Processo criminal")
+    print("- Multas significativas")
+    
+    consent = input(f"\n{Fore.CYAN}Você leu, entende e concorda com estes termos? (s/n): {Style.RESET_ALL}").strip().lower()
+    
+    if consent != 's':
+        print(f"\n{Fore.RED}❌ Operação cancelada. Uso não autorizado não é permitido.{Style.RESET_ALL}")
+        sys.exit(1)
 
 class AdvancedVulnerabilityScanner:
     def __init__(self, base_url):
@@ -301,6 +322,9 @@ class AdvancedVulnerabilityScanner:
 
 
 def main():
+    # Display responsible use warning BEFORE any scanning begins
+    display_responsible_use_warning()
+    
     print(f"{Fore.CYAN}🔒 Scanner Avançado de Vulnerabilidades XSS{Style.RESET_ALL}")
     
     while True:
