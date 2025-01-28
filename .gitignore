@@ -1,0 +1,26 @@
+# Arquivos de relatório de vulnerabilidades
+vulnerability_report.json
+vulnerability_report.txt
+
+# Ambiente virtual Python
+venv/
+env/
+.env
+
+# Cache Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Arquivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
