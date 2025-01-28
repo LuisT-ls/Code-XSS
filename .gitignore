@@ -2,6 +2,11 @@
 vulnerability_report.json
 vulnerability_report.txt
 
+# Arquivos de dependências
+requirements.txt
+Pipfile
+Pipfile.lock
+
 # Ambiente virtual Python
 venv/
 env/

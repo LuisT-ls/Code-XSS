@@ -1,4 +1,4 @@
-# Scanner de Vulnerabilidades XSS
+# Scanner Avançado de Vulnerabilidades XSS
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -18,21 +18,10 @@ O uso não autorizado desta ferramenta pode resultar em:
 - Processo criminal
 - Multas significativas
 
-## 🚀 Funcionalidades
-
-- Varredura avançada de XSS
-- Detecção de SQL Injection
-- Análise de formulários HTML
-- Verificação de headers de segurança
-- Execução paralela para maior eficiência
-- Geração de relatórios em TXT e JSON
-- Interface colorida no terminal
-- Validação de URLs
-- Sistema de timeout configurável
-
 ## 📋 Requisitos
 
 - Python 3.x
+- python3-venv (para criação do ambiente virtual)
 - Bibliotecas Python listadas em `requirements.txt`
 
 ## 🛠️ Instalação
@@ -44,15 +33,45 @@ git clone https://github.com/LuisT-ls/Code-XSS.git
 cd Code-XSS
 ```
 
-2. Instale as dependências:
+2. Instale o pacote python3-venv (necessário para ambientes virtuais):
+
+```bash
+sudo apt install python3-venv python3-full
+```
+
+3. Crie um ambiente virtual:
+
+```bash
+python3 -m venv venv
+```
+
+4. Ative o ambiente virtual:
+
+```bash
+source venv/bin/activate
+```
+
+5. Instale as dependências:
 
 ```bash
 pip install requests beautifulsoup4 colorama python-dotenv urllib3
 ```
 
+6. (Opcional) Para gerar um arquivo de requisitos:
+
+```bash
+pip freeze > requirements.txt
+```
+
+**Nota**: Para desativar o ambiente virtual quando terminar, use:
+
+```bash
+deactivate
+```
+
 ## 💻 Uso
 
-Execute o scanner através do comando:
+Com o ambiente virtual ativado, execute o scanner através do comando:
 
 ```bash
 python xss.py
