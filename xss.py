@@ -1457,89 +1457,8 @@ def main():
             print(f"{Fore.RED}❌ Opção inválida. Tente novamente.{Style.RESET_ALL}")
 
 
-def create_readme():
-    """
-    Cria um arquivo README.md com instruções apenas se ele não existir
-    """
-    if os.path.exists("README.md"):
-        print(f"{Fore.YELLOW}⚠️ README.md já existe e será preservado.{Style.RESET_ALL}")
-        return
-
-    # Se não existe, então cria o arquivo com o conteúdo padrão
-    readme_content = """# EthicScope XSS - Scanner Avançado de Vulnerabilidades
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Segurança-Web-blue" alt="Web Security">
-  <img src="https://img.shields.io/badge/Versão-2.0-green" alt="Version 2.0">
-  <img src="https://img.shields.io/badge/Python-3.7+-yellow" alt="Python 3.7+">
-  <img src="https://img.shields.io/badge/Licença-MIT-red" alt="MIT License">
-</p>
-
-# Restante do conteúdo do README...
-"""
-
-    with open("README.md", "w", encoding="utf-8") as f:
-        f.write(readme_content)
-    print(f"{Fore.GREEN}✅ Arquivo README.md criado com sucesso!{Style.RESET_ALL}")
-
-
-def create_license():
-    """
-    Cria um arquivo de licença MIT
-    """
-    license_content = """MIT License
-
-Copyright (c) 2025 XSS Scanner
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-"""
-
-    with open("LICENSE", "w", encoding="utf-8") as f:
-        f.write(license_content)
-    print(f"{Fore.GREEN}✅ Arquivo de licença criado com sucesso!{Style.RESET_ALL}")
-
-
-:def create_requirements()
-    """
-    Cria um arquivo requirements.txt
-    """
-    requirements = """requests>=2.28.0
-beautifulsoup4>=4.11.0
-colorama>=0.4.6
-python-dotenv>=1.0.0
-urllib3>=1.26.0
-"""
-
-    with open("requirements.txt", "w", encoding="utf-8") as f:
-        f.write(requirements)
-    print(
-        f"{Fore.GREEN}✅ Arquivo requirements.txt criado com sucesso!{Style.RESET_ALL}"
-    )
-
-
 if __name__ == "__main__":
     try:
-        # Criar arquivos de suporte
-        create_readme()
-        create_license()
-        create_requirements()
-
         # Executar programa principal
         main()
     except KeyboardInterrupt:
