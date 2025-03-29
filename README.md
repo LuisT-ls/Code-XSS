@@ -1,132 +1,219 @@
-# Scanner Avançado de Vulnerabilidades XSS
+# EthicScope XSS - Scanner Avançado de Vulnerabilidades
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<p align="center">
+  <img src="https://img.shields.io/badge/Segurança-Web-blue" alt="Web Security">
+  <img src="https://img.shields.io/badge/Versão-2.0-green" alt="Version 2.0">
+  <img src="https://img.shields.io/badge/Python-3.7+-yellow" alt="Python 3.7+">
+  <img src="https://img.shields.io/badge/Licença-MIT-red" alt="MIT License">
+</p>
 
-Um scanner de vulnerabilidades XSS (Cross-Site Scripting) e SQL Injection robusto e eficiente, desenvolvido em Python. Esta ferramenta foi projetada para auxiliar profissionais de segurança e desenvolvedores na identificação de possíveis vulnerabilidades em aplicações web.
+## 🔍 Descrição
+
+EthicScope XSS é um scanner avançado para detecção e análise de vulnerabilidades Cross-Site Scripting (XSS) em aplicações web. Desenvolvido para profissionais de segurança e desenvolvedores, esta ferramenta realiza uma varredura completa em sites para identificar diferentes tipos de vulnerabilidades XSS, incluindo:
+
+- XSS Refletido
+- Potencial XSS baseado em DOM
+- Análise de cabeçalhos de segurança
+- Problemas em configuração de cookies
+- Falhas em formulários web
+- Vazamento de informações sensíveis em comentários
 
 ## ⚠️ Aviso de Uso Responsável
 
-Este scanner destina-se APENAS a fins éticos e legais. Antes de utilizar esta ferramenta, certifique-se de que você:
+**ESTA FERRAMENTA DESTINA-SE EXCLUSIVAMENTE PARA FINS ÉTICOS E LEGAIS!**
 
-- Possui AUTORIZAÇÃO EXPLÍCITA por escrito do proprietário do sistema
-- Está testando apenas sistemas que você possui ou tem permissão documentada
-- Está utilizando em ambientes de teste controlados
+- Você **DEVE** ter **AUTORIZAÇÃO EXPLÍCITA POR ESCRITO** do proprietário do sistema antes de realizar qualquer teste
+- Realizar testes de penetração sem permissão é um crime em muitos países
+- Use SOMENTE em sistemas que você possui ou para os quais tem permissão documentada
+- O autor não se responsabiliza por qualquer uso indevido desta ferramenta
 
-O uso não autorizado desta ferramenta pode resultar em:
+## ✨ Características Principais
 
-- Ações legais
-- Processo criminal
-- Multas significativas
+- **Crawling Inteligente**: Navegação automática pelo site-alvo com controle de profundidade
+- **Múltiplas Técnicas de Detecção**: Testes para diferentes vetores e contextos de XSS
+- **Análise Detalhada de Segurança**: Verificação abrangente de configurações de segurança
+- **Payloads Avançados**: Biblioteca extensível de payloads, incluindo técnicas de bypass de WAF
+- **Análise de DOM**: Identificação de possíveis vulnerabilidades em JavaScript
+- **Concorrência**: Uso de multithreading para escaneamento rápido e eficiente
+- **Relatórios Detalhados**: Geração de relatórios completos em formatos TXT e JSON
+- **Configurável**: Opções de personalização via arquivo .env e arquivos de payloads
 
-## 📋 Requisitos
+## 🛠️ Requisitos
 
-- Python 3.x
-- python3-venv (para criação do ambiente virtual)
-- Bibliotecas Python listadas em `requirements.txt`
+- Python 3.7 ou superior
+- Bibliotecas:
+  - requests
+  - beautifulsoup4
+  - colorama
+  - python-dotenv
+  - urllib3
 
-## 🛠️ Instalação
-
-1. Clone o repositório:
+## 📦 Instalação
 
 ```bash
+# Clonar o repositório
 git clone https://github.com/LuisT-ls/Code-XSS.git
 cd Code-XSS
-```
 
-2. Instale o pacote python3-venv (necessário para ambientes virtuais):
-
-```bash
-sudo apt install python3-venv python3-full
-```
-
-3. Crie um ambiente virtual:
-
-```bash
-python3 -m venv venv
-```
-
-4. Ative o ambiente virtual:
-
-```bash
-source venv/bin/activate
-```
-
-5. Instale as dependências:
-
-```bash
+# Instalar dependências
 pip install requests beautifulsoup4 colorama python-dotenv urllib3
 ```
 
-6. (Opcional) Para gerar um arquivo de requisitos:
+Alternativamente, você pode criar um ambiente virtual:
 
 ```bash
-pip freeze > requirements.txt
+# Criar e ativar ambiente virtual
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# ou
+venv\Scripts\activate  # Windows
+
+# Instalar dependências
+pip install requests beautifulsoup4 colorama python-dotenv urllib3
 ```
 
-**Nota**: Para desativar o ambiente virtual quando terminar, use:
+## 🚀 Uso
 
-```bash
-deactivate
-```
-
-## 💻 Uso
-
-Com o ambiente virtual ativado, execute o scanner através do comando:
+Para iniciar o scanner:
 
 ```bash
 python xss.py
 ```
 
-O programa irá:
+### Menu Interativo
 
-1. Exibir o aviso de uso responsável
-2. Solicitar a URL alvo
-3. Realizar a varredura completa
-4. Gerar relatórios em TXT e JSON
+O programa oferece um menu com várias opções:
+
+1. **Iniciar escaneamento completo**: Realiza uma análise completa de um site-alvo
+2. **Configurar opções avançadas**: Personaliza parâmetros de execução do scanner
+3. **Verificar cabeçalhos de segurança**: Analisa apenas os cabeçalhos HTTP de segurança
+4. **Sair**: Encerra o programa
+
+### Escaneamento Completo
+
+Ao selecionar a opção 1, você deve:
+
+1. Informar a URL alvo (ex: `https://exemplo.com.br`)
+2. Definir a profundidade de crawling (1-5, padrão: 2)
+3. Estabelecer um número máximo de URLs a serem escaneadas (padrão: 100)
+
+O scanner então iniciará o processo de:
+
+- Crawling do site
+- Análise de URLs e formulários
+- Identificação de vulnerabilidades
+- Geração de relatórios
+
+## ⚙️ Configuração
+
+### Arquivo .env
+
+O scanner utiliza um arquivo `.env` para configurações avançadas:
+
+```
+MAX_WORKERS=10       # Número máximo de threads
+TIMEOUT=15           # Timeout para requisições (segundos)
+FOLLOW_REDIRECTS=True   # Seguir redirecionamentos
+VERIFY_SSL=False     # Verificar certificados SSL
+USER_AGENT=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+# PROXY=http://seu-proxy:porta  # Opcional: configure um proxy
+```
+
+### Personalização de Payloads
+
+Você pode personalizar os payloads utilizados nos testes editando os arquivos:
+
+- `xss_payloads.txt`: Payloads padrão para testes de XSS
+- `bypass_payloads.txt`: Payloads especializados para bypass de WAF e filtros
 
 ## 📊 Relatórios
 
-O scanner gera dois tipos de relatórios:
+Os resultados são salvos em dois formatos:
 
-- `vulnerability_report.txt`: Relatório detalhado em formato texto
-- `vulnerability_report.json`: Relatório estruturado em formato JSON
+### Relatório de Texto (vulnerability_report.txt)
 
-## 🔧 Configuração
+Contém uma visão detalhada das vulnerabilidades encontradas, incluindo:
 
-As seguintes variáveis podem ser configuradas através de um arquivo `.env`:
+- Resumo estatístico
+- Detalhes de cada vulnerabilidade
+- Recomendações para correção
+- Informações sobre o escaneamento
 
-- `MAX_WORKERS`: Número máximo de workers para execução paralela (padrão: 10)
-- `TIMEOUT`: Tempo limite para requisições em segundos (padrão: 10)
+### Relatório JSON (vulnerability_report.json)
 
-## 📁 Estrutura do Projeto
+Formato estruturado para integração com outras ferramentas:
+
+- Metadados de escaneamento
+- Estatísticas completas
+- Array de vulnerabilidades com detalhes
+
+## 📋 Exemplos de Saída
+
+### Vulnerabilidade XSS Refletido
 
 ```
-.
-├── LICENSE
-├── README.md
-├── vulnerability_report.json
-├── vulnerability_report.txt
-└── xss.py
+🚨 VULNERABILIDADE DETECTADA!
+Tipo: Reflected XSS
+Severidade: Alta
+URL: https://exemplo.com.br/search?q=%3Cscript%3Ealert%28%27XSS%27%29%3C%2Fscript%3E
+Payload: <script>alert('XSS')</script>
+Parameter: q
+Evidence: Payload refletido na resposta
 ```
 
-## 🤝 Contribuição
+### Problema de Cabeçalho de Segurança
 
-Contribuições são bem-vindas! Por favor, sinta-se à vontade para enviar pull requests ou abrir issues para melhorias.
+```
+🚨 VULNERABILIDADE DETECTADA!
+Tipo: Cabeçalho de Segurança Ausente
+Severidade: Alta
+URL: https://exemplo.com.br
+Header: Content-Security-Policy
+Message: Content Security Policy (CSP) não configurada
+Description: A falta de CSP aumenta o risco de ataques XSS e de injeção de conteúdo
+```
 
-## 📄 Licença
+## 🔄 Workflow de Segurança
 
-Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
+Para integrar esta ferramenta em seu workflow de segurança:
 
-## 🔒 Segurança
+1. **Desenvolvimento**: Teste regularmente durante o ciclo de desenvolvimento
+2. **Pré-produção**: Execute varreduras completas antes de deployments
+3. **Produção**: Realize testes periódicos com escopo limitado e autorizado
+4. **CI/CD**: Integre com seus pipelines de integração contínua
 
-Para reportar vulnerabilidades de segurança, por favor, abra uma issue descrevendo o problema encontrado.
+## 🛡️ Boas Práticas de Prevenção XSS
 
-## ⚡ Limitações
+1. **Escapar saídas**: Sempre escape dados de usuário antes de renderizar em HTML
+2. **Implementar CSP**: Configure uma Content Security Policy rigorosa
+3. **Validar entradas**: Valide e sanitize todas as entradas de usuário
+4. **Usar frameworks modernos**: Frameworks como React, Angular e Vue têm proteções embutidas
+5. **Aplicar HttpOnly e Secure**: Configure cookies corretamente
+6. **Implementar HSTS**: Force conexões HTTPS
 
-- O scanner não garante a detecção de todas as vulnerabilidades possíveis
-- Falsos positivos podem ocorrer
-- O uso em sites com alta carga pode causar impacto no desempenho
+## 🤝 Contribuições
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e enviar pull requests para melhorar esta ferramenta.
+
+Para contribuir:
+
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`)
+3. Commit suas mudanças (`git commit -m 'Adiciona nova feature'`)
+4. Push para a branch (`git push origin feature/nova-feature`)
+5. Abra um Pull Request
+
+## 📜 Licença
+
+Este projeto está licenciado sob a [Licença MIT](LICENSE) - veja o arquivo LICENSE para detalhes.
+
+## 📞 Contato
+
+Para sugestões, feedback ou dúvidas, abra uma issue no GitHub.
 
 ---
 
-**Nota**: Este é um projeto em desenvolvimento. Use com responsabilidade e sempre priorize a segurança e a ética em testes de penetração.
+<p align="center">
+  <b>Use de forma ética e responsável!</b><br>
+  Desenvolvido com ❤️ para a comunidade de segurança
+</p>

