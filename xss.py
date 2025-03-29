@@ -1459,85 +1459,23 @@ def main():
 
 def create_readme():
     """
-    Cria um arquivo README.md com instruções
+    Cria um arquivo README.md com instruções apenas se ele não existir
     """
-    readme_content = """# Scanner Avançado de Vulnerabilidades XSS
+    if os.path.exists("README.md"):
+        print(f"{Fore.YELLOW}⚠️ README.md já existe e será preservado.{Style.RESET_ALL}")
+        return
 
-## Descrição
-Esta ferramenta é um scanner avançado para detecção de vulnerabilidades Cross-Site Scripting (XSS) em aplicações web. 
-O scanner realiza testes abrangentes para identificar XSS refletido, armazenado e baseado em DOM.
+    # Se não existe, então cria o arquivo com o conteúdo padrão
+    readme_content = """# EthicScope XSS - Scanner Avançado de Vulnerabilidades
 
-## ⚠️ Aviso de Uso Responsável
-**Este scanner destina-se APENAS a fins éticos e legais!**
+<p align="center">
+  <img src="https://img.shields.io/badge/Segurança-Web-blue" alt="Web Security">
+  <img src="https://img.shields.io/badge/Versão-2.0-green" alt="Version 2.0">
+  <img src="https://img.shields.io/badge/Python-3.7+-yellow" alt="Python 3.7+">
+  <img src="https://img.shields.io/badge/Licença-MIT-red" alt="MIT License">
+</p>
 
-Você DEVE ter autorização explícita por escrito do proprietário do sistema antes de realizar qualquer teste.
-Realizar testes de penetração sem permissão é um crime em muitos países.
-
-## Características
-- Detecção de XSS Refletido
-- Análise de potencial XSS baseado em DOM
-- Verificação de cabeçalhos de segurança
-- Identificação de vulnerabilidades em formulários
-- Crawling inteligente de aplicações web
-- Bypass de filtros comuns de XSS
-- Geração de relatórios detalhados (TXT e JSON)
-
-## Requisitos
-- Python 3.7+
-- Bibliotecas: requests, beautifulsoup4, colorama, python-dotenv
-
-## Instalação
-```bash
-# Clonar o repositório
-git clone https://github.com/seu-usuario/xss-scanner.git
-cd xss-scanner
-
-# Instalar dependências
-pip install -r requirements.txt
-```
-
-## Uso
-```bash
-python xss_scanner.py
-```
-
-O programa iniciará com um menu interativo que permite:
-1. Iniciar um escaneamento completo
-2. Configurar opções avançadas
-3. Verificar cabeçalhos de segurança
-4. Sair
-
-## Configuração
-O scanner utiliza um arquivo `.env` para configurações avançadas:
-
-```
-MAX_WORKERS=10       # Número máximo de threads
-TIMEOUT=15           # Timeout para requisições (segundos)
-FOLLOW_REDIRECTS=True   # Seguir redirecionamentos
-VERIFY_SSL=False     # Verificar certificados SSL
-USER_AGENT=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
-```
-
-## Personalização de Payloads
-O scanner suporta personalização de payloads através dos arquivos:
-- `xss_payloads.txt`: Payloads padrão para testes de XSS
-- `bypass_payloads.txt`: Payloads para bypass de WAF e filtros
-
-## Resultados
-Os resultados são salvos em:
-- `vulnerability_report.txt`: Relatório detalhado em texto
-- `vulnerability_report.json`: Relatório em formato JSON para integração com outras ferramentas
-
-## Limitações
-- O scanner não detecta todas as formas de XSS, especialmente variantes mais complexas
-- Alguns WAFs avançados podem bloquear os testes
-- Não substitui testes manuais realizados por profissionais de segurança
-
-## Licença
-Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
-## Disclaimer
-O autor não se responsabiliza pelo uso indevido desta ferramenta. Este software é fornecido apenas para fins educacionais e de teste legítimo de segurança.
+# Restante do conteúdo do README...
 """
 
     with open("README.md", "w", encoding="utf-8") as f:
@@ -1577,7 +1515,7 @@ SOFTWARE.
     print(f"{Fore.GREEN}✅ Arquivo de licença criado com sucesso!{Style.RESET_ALL}")
 
 
-def create_requirements():
+:def create_requirements()
     """
     Cria um arquivo requirements.txt
     """
